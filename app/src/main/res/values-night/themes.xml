@@ -1,7 +1,13 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Base.Theme.QRAsistencia" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your dark theme here. -->
-        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Tema base (para Login) - Versión Noche -->
+    <style name="Theme.QRAsist" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/maestro_primary</item>
+        <item name="colorPrimaryDark">@color/maestro_primary_dark</item>
+        <item name="colorAccent">@color/maestro_primary_light</item>
+        <item name="android:statusBarColor">@color/maestro_primary_dark</item>
     </style>
+
+    <style name="Theme.QRAsist.Maestro" parent="Theme.QRAsist" />
+    <style name="Theme.QRAsist.Alumno" parent="Theme.QRAsist" />
 </resources>

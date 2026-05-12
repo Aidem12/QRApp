@@ -1,9 +1,25 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Base.Theme.QRAsistencia" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Tema base (para Login) -->
+    <style name="Theme.QRAsist" parent="Theme.Material3.Light.NoActionBar">
+        <item name="colorPrimary">@color/maestro_primary</item>
+        <item name="colorPrimaryDark">@color/maestro_primary_dark</item>
+        <item name="colorAccent">@color/maestro_primary_light</item>
+        <item name="android:windowBackground">@color/background</item>
+        <item name="android:statusBarColor">@color/maestro_primary_dark</item>
     </style>
 
-    <style name="Theme.QRAsistencia" parent="Base.Theme.QRAsistencia" />
+    <!-- Tema Maestro -->
+    <style name="Theme.QRAsist.Maestro" parent="Theme.QRAsist">
+        <item name="colorPrimary">@color/maestro_primary</item>
+        <item name="colorPrimaryDark">@color/maestro_primary_dark</item>
+        <item name="android:statusBarColor">@color/maestro_primary_dark</item>
+    </style>
+
+    <!-- Tema Alumno -->
+    <style name="Theme.QRAsist.Alumno" parent="Theme.QRAsist">
+        <item name="colorPrimary">@color/alumno_primary</item>
+        <item name="colorPrimaryDark">@color/alumno_primary_dark</item>
+        <item name="android:statusBarColor">@color/alumno_primary_dark</item>
+    </style>
 </resources>

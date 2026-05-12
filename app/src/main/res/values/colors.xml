@@ -1,5 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <!-- Maestro - Azul -->
+    <color name="maestro_primary">#1565C0</color>
+    <color name="maestro_primary_dark">#003c8f</color>
+    <color name="maestro_primary_light">#5e92f3</color>
+    <color name="maestro_on_primary">#FFFFFF</color>
+
+    <!-- Alumno - Verde -->
+    <color name="alumno_primary">#2E7D32</color>
+    <color name="alumno_primary_dark">#005005</color>
+    <color name="alumno_primary_light">#60ad5e</color>
+    <color name="alumno_on_primary">#FFFFFF</color>
+
+    <!-- Estados -->
+    <color name="estado_presente">#388E3C</color>
+    <color name="estado_ausente">#D32F2F</color>
+    <color name="estado_retardo">#F57C00</color>
+    <color name="tarea_pendiente">#F9A825</color>
+    <color name="tarea_entregada">#388E3C</color>
+    <color name="tarea_no_entregada">#D32F2F</color>
+
+    <!-- Generales -->
+    <color name="background">#F5F5F5</color>
+    <color name="surface">#FFFFFF</color>
+    <color name="on_surface">#212121</color>
+    <color name="on_surface_variant">#757575</color>
+    <color name="divider">#E0E0E0</color>
 </resources>
