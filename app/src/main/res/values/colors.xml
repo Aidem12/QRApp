@@ -1,29 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Maestro - Azul -->
-    <color name="maestro_primary">#1565C0</color>
-    <color name="maestro_primary_dark">#003c8f</color>
-    <color name="maestro_primary_light">#5e92f3</color>
+    <!-- Paleta de Colores (Rol Maestro - Enfoque Ejecutivo/Índigo) -->
+    <color name="maestro_primary">#1E40AF</color>
+    <color name="maestro_primary_dark">#1E3A8A</color>
+    <color name="maestro_primary_light">#3B82F6</color>
     <color name="maestro_on_primary">#FFFFFF</color>
 
-    <!-- Alumno - Verde -->
-    <color name="alumno_primary">#2E7D32</color>
-    <color name="alumno_primary_dark">#005005</color>
-    <color name="alumno_primary_light">#60ad5e</color>
+    <!-- Paleta de Colores (Rol Alumno - Restaurada para evitar error de compilación) -->
+    <color name="alumno_primary">#059669</color>
+    <color name="alumno_primary_dark">#064E3B</color>
+    <color name="alumno_primary_light">#34D399</color>
     <color name="alumno_on_primary">#FFFFFF</color>
 
-    <!-- Estados -->
-    <color name="estado_presente">#388E3C</color>
-    <color name="estado_ausente">#D32F2F</color>
-    <color name="estado_retardo">#F57C00</color>
-    <color name="tarea_pendiente">#F9A825</color>
-    <color name="tarea_entregada">#388E3C</color>
-    <color name="tarea_no_entregada">#D32F2F</color>
+    <!-- Fondo y Superficies -->
+    <color name="app_background">#F8FAFC</color>
+    <color name="surface_card">#FFFFFF</color>
+    
+    <!-- Textos -->
+    <color name="text_primary">#1E293B</color>
+    <color name="text_secondary">#64748B</color>
+    
+    <!-- Inputs -->
+    <color name="input_background">#F1F5F9</color>
 
-    <!-- Generales -->
-    <color name="background">#F5F5F5</color>
+    <!-- ESTADOS DE ASISTENCIA (Sutiles y Modernos) -->
+    <color name="estado_asistio_text">#065F46</color>
+    <color name="estado_asistio_bg">#E6F4EA</color>
+    <color name="estado_retardo_text">#B45309</color>
+    <color name="estado_retardo_bg">#FEF3C7</color>
+    <color name="estado_falta_text">#B91C1C</color>
+    <color name="estado_falta_bg">#FEE2E2</color>
+
+    <!-- ESTADOS DE TAREAS (Mapeados para compatibilidad con código Java) -->
+    <color name="tarea_entregada">#065F46</color>
+    <color name="tarea_no_entregada">#B91C1C</color>
+    <color name="tarea_pendiente">#B45309</color>
+
+    <!-- Legacy / Compatibilidad (Mapeados a la nueva paleta para evitar errores de compilación) -->
+    <color name="background">#F8FAFC</color>
     <color name="surface">#FFFFFF</color>
-    <color name="on_surface">#212121</color>
-    <color name="on_surface_variant">#757575</color>
-    <color name="divider">#E0E0E0</color>
+    <color name="on_surface">#1E293B</color>
+    <color name="on_surface_variant">#64748B</color>
+    <color name="divider">#E2E8F0</color>
+    
+    <color name="estado_presente">#065F46</color>
+    <color name="estado_ausente">#B91C1C</color>
+    <color name="estado_retardo">#B45309</color>
 </resources>
