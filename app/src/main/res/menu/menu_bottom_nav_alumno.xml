@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_mi_qr"
+        android:icon="@android:drawable/ic_menu_camera"
+        android:title="@string/titulo_mi_qr" />
+    <item
+        android:id="@+id/nav_mis_tareas"
+        android:icon="@android:drawable/ic_menu_edit"
+        android:title="@string/titulo_mis_tareas" />
+</menu>

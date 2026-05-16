@@ -1,3 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">QRAsistencia</string>
+    <!-- App -->
+    <string name="app_name">QRAsist</string>
+    <string name="app_tagline">Control de Asistencia Escolar</string>
+
+    <!-- Login -->
+    <string name="hint_usuario">Usuario</string>
+    <string name="hint_password">Contraseña</string>
+    <string name="btn_login">Iniciar Sesión</string>
+    <string name="label_rol">Selecciona tu rol</string>
+    <string name="rol_maestro">Maestro</string>
+    <string name="rol_alumno">Alumno</string>
+    <string name="error_credenciales">Usuario o contraseña incorrectos</string>
+    <string name="error_campos_vacios">Por favor completa todos los campos</string>
+
+    <!-- Dashboard Maestro -->
+    <string name="nav_inicio">Inicio</string>
+    <string name="nav_escanear">Escanear</string>
+    <string name="nav_alumnos">Alumnos</string>
+    <string name="nav_historial">Historial</string>
+    <string name="label_asistencias_hoy">Asistencias hoy</string>
+    <string name="label_tareas_activas">Tareas activas</string>
+    <string name="label_total_alumnos">Total alumnos</string>
+    <string name="titulo_ultimas_asistencias">Últimas asistencias</string>
+    <string name="action_grupos">Gestionar Grupos</string>
+
+    <!-- Scanner -->
+    <string name="titulo_scanner">Escanear QR</string>
+    <string name="instruccion_scanner">Apunta la cámara al código QR del alumno</string>
+    <string name="btn_registrar_asistencia">Registrar Asistencia</string>
+    <string name="btn_cancelar">Cancelar</string>
+    <string name="hint_observacion">Observación (opcional)</string>
+    <string name="error_qr_invalido">Código QR no reconocido</string>
+    <string name="exito_asistencia">Asistencia registrada correctamente</string>
+    <string name="error_ya_registrado">Este alumno ya tiene asistencia registrada hoy</string>
+
+    <!-- Alumnos -->
+    <string name="titulo_alumnos">Gestión de Alumnos</string>
+    <string name="btn_registrar_alumno">Registrar alumno</string>
+    <string name="btn_registrar_groupo">Registrar grupo</string>
+    <string name="hint_nombre">Nombre completo</string>
+    <string name="hint_matricula">Matrícula</string>
+    <string name="hint_email">Correo electrónico</string>
+    <string name="dialog_eliminar_titulo">Eliminar alumno</string>
+    <string name="dialog_eliminar_mensaje">¿Estás seguro de que deseas eliminar este alumno?</string>
+    <string name="btn_confirmar">Confirmar</string>
+    <string name="exito_alumno_guardado">Alumno guardado correctamente</string>
+    <string name="exito_alumno_eliminado">Alumno eliminado</string>
+
+    <!-- Tareas -->
+    <string name="titulo_tareas">Gestión de Tareas</string>
+    <string name="btn_nueva_tarea">Nueva Tarea</string>
+    <string name="hint_titulo_tarea">Título de la tarea</string>
+    <string name="hint_descripcion">Descripción</string>
+    <string name="hint_fecha_limite">Fecha límite</string>
+    <string name="label_seleccionar_fecha">Seleccionar fecha</string>
+    <string name="exito_tarea_guardada">Tarea guardada y asignada al grupo</string>
+
+    <!-- Historial -->
+    <string name="titulo_historial">Historial</string>
+    <string name="tab_asistencias">Asistencias</string>
+    <string name="tab_tareas">Tareas</string>
+    <string name="filtrar_por_alumno">Filtrar por alumno</string>
+    <string name="filtrar_por_grupo">Filtrar por grupo</string>
+    <string name="label_todos_alumnos">Todos los alumnos</string>
+    <string name="label_todos_grupos">Todos los grupos</string>
+
+    <!-- Alumno -->
+    <string name="titulo_mi_qr">Mi QR</string>
+    <string name="titulo_mis_tareas">Mis Tareas</string>
+    <string name="tab_pendientes">Pendientes</string>
+    <string name="tab_entregadas">Entregadas</string>
+    <string name="tab_no_entregadas">No entregadas</string>
+    <string name="btn_compartir_qr">Compartir QR</string>
+    <string name="label_mi_matricula">Matrícula</string>
+    <string name="label_fecha_limite">Fecha límite: </string>
+
+    <!-- Tareas Alumno -->
+    <string name="btn_adjuntar_imagen">Adjuntar Imagen</string>
+    <string name="btn_enviar_tarea">Enviar Tarea</string>
+    <string name="btn_modificar_tarea">Modificar Tarea</string>
+    <string name="exito_tarea_enviada">Tarea enviada correctamente</string>
+
+    <!-- Grupos -->
+    <string name="titulo_grupos">Gestión de Grupos</string>
+    <string name="btn_nuevo_grupo">Nuevo Grupo</string>
+    <string name="hint_nombre_grupo">Nombre del grupo</string>
+    <string name="hint_descripcion_grupo">Descripción del grupo</string>
+    <string name="exito_grupo_guardado">Grupo guardado correctamente</string>
+
+    <!-- Generales -->
+    <string name="btn_guardar">Guardar</string>
+    <string name="btn_editar">Editar</string>
+    <string name="btn_eliminar">Eliminar</string>
+    <string name="btn_cerrar_sesion">Cerrar sesión</string>
+    <string name="estado_presente">Presente</string>
+    <string name="estado_ausente">Ausente</string>
+    <string name="estado_retardo">Retardo</string>
+    <string name="estado_pendiente">Pendiente</string>
+    <string name="estado_entregada">Entregada</string>
+    <string name="estado_no_entregada">No entregada</string>
+    <string name="estado_rechazada">Rechazada</string>
+    <string name="estado_revisada">Revisada</string>
+    <string name="estado_vencida">Vencida</string>
+    <string name="sin_registros">Sin registros disponibles</string>
 </resources>

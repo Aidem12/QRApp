@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Estilos Base (Padres obligatorios para evitar errores de AAPT con notación de puntos) -->
+    <!-- Estilos Base -->
     <style name="QRAsist" />
     <style name="QRAsist.Text" parent="android:Widget.TextView" />
     <style name="QRAsist.Card" parent="Widget.Material3.CardView.Elevated" />
     <style name="QRAsist.Button" parent="Widget.Material3.Button" />
     <style name="QRAsist.Chip" parent="Widget.Material3.Chip.Assist" />
+
+    <!-- Estilo específico para Chips en Items -->
+    <style name="QRAsist.Chip.Item" parent="Widget.Material3.Chip.Assist">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="chipBackgroundColor">@color/maestro_primary_light</item>
+    </style>
 
     <!-- Toolbar -->
     <style name="QRAsist.Toolbar" parent="Widget.Material3.Toolbar">
@@ -55,18 +61,6 @@
         <item name="chipBackgroundColor">@color/estado_retardo</item>
         <item name="android:textColor">#FFFFFF</item>
     </style>
-    <style name="QRAsist.Chip.Pendiente" parent="QRAsist.Chip">
-        <item name="chipBackgroundColor">@color/tarea_pendiente</item>
-        <item name="android:textColor">#FFFFFF</item>
-    </style>
-    <style name="QRAsist.Chip.Entregada" parent="QRAsist.Chip">
-        <item name="chipBackgroundColor">@color/tarea_entregada</item>
-        <item name="android:textColor">#FFFFFF</item>
-    </style>
-    <style name="QRAsist.Chip.NoEntregada" parent="QRAsist.Chip">
-        <item name="chipBackgroundColor">@color/tarea_no_entregada</item>
-        <item name="android:textColor">#FFFFFF</item>
-    </style>
 
     <!-- Textos -->
     <style name="QRAsist.Text.Title" parent="QRAsist.Text">
@@ -74,24 +68,20 @@
         <item name="android:textColor">@color/on_surface</item>
         <item name="android:fontFamily">sans-serif-medium</item>
     </style>
-
     <style name="QRAsist.Text.Subtitle" parent="QRAsist.Text">
         <item name="android:textAppearance">?attr/textAppearanceTitleMedium</item>
         <item name="android:textColor">@color/on_surface_variant</item>
     </style>
-
     <style name="QRAsist.Text.Body" parent="QRAsist.Text">
         <item name="android:textAppearance">?attr/textAppearanceBodyMedium</item>
         <item name="android:textColor">@color/on_surface</item>
     </style>
-
     <style name="QRAsist.Text.StatNumber" parent="QRAsist.Text">
         <item name="android:textSize">@dimen/stat_number_size</item>
         <item name="android:textColor">?attr/colorPrimary</item>
         <item name="android:fontFamily">sans-serif-medium</item>
         <item name="android:textAlignment">center</item>
     </style>
-
     <style name="QRAsist.Text.StatLabel" parent="QRAsist.Text">
         <item name="android:textSize">@dimen/stat_label_size</item>
         <item name="android:textColor">@color/on_surface_variant</item>

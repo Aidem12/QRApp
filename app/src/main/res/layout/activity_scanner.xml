@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar_scanner"
+            style="@style/QRAsist.Toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:navigationIcon="@android:drawable/ic_menu_close_clear_cancel"
+            app:title="@string/titulo_scanner" />
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <!-- Vista A — Modo cámara -->
+        <LinearLayout
+            android:id="@+id/layout_camara"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="visible">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:gravity="center"
+                android:paddingHorizontal="32dp"
+                android:text="@string/instruccion_scanner"
+                android:textAppearance="?attr/textAppearanceBodyMedium"
+                android:textColor="@color/on_surface_variant" />
+
+            <com.journeyapps.barcodescanner.DecoratedBarcodeView
+                android:id="@+id/barcode_scanner"
+                android:layout_width="match_parent"
+                android:layout_height="280dp"
+                app:zxing_framing_rect_height="220dp"
+                app:zxing_framing_rect_width="220dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:gravity="center"
+                android:text="Apunta al código QR del alumno"
+                android:textAppearance="?attr/textAppearanceBodySmall"
+                android:textColor="@color/on_surface_variant" />
+        </LinearLayout>
+
+        <!-- Vista B — Resultado del escaneo -->
+        <ScrollView
+            android:id="@+id/layout_resultado"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="16dp"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <com.google.android.material.card.MaterialCardView
+                    style="@style/QRAsist.Card"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:padding="16dp">
+
+                        <com.google.android.material.imageview.ShapeableImageView
+                            android:id="@+id/iv_avatar_alumno"
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:background="@color/maestro_primary_light"
+                            android:padding="12dp"
+                            android:src="@android:drawable/ic_menu_myplaces"
+                            app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Full" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/tv_nombre_alumno"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textAppearance="?attr/textAppearanceTitleLarge"
+                                android:textColor="?attr/colorPrimary"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/tv_matricula_alumno"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textAppearance="?attr/textAppearanceBodyMedium"
+                                android:textColor="@color/on_surface_variant" />
+
+                            <TextView
+                                android:id="@+id/tv_grupo_alumno"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textAppearance="?attr/textAppearanceBodySmall"
+                                android:textColor="@color/on_surface_variant" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    style="@style/QRAsist.Card"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="12dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="8dp"
+                            android:text="Estado de asistencia"
+                            android:textAppearance="?attr/textAppearanceTitleSmall" />
+
+                        <Spinner
+                            android:id="@+id/spinner_estado"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp" />
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/QRAsist.TextInputLayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12dp">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/et_observacion"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="@string/hint_observacion"
+                                android:inputType="textMultiLine"
+                                android:maxLines="3" />
+                        </com.google.android.material.textfield.TextInputLayout>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/btn_cancelar_scan"
+                        style="@style/QRAsist.Button.Outlined"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:layout_weight="1"
+                        android:text="@string/btn_cancelar" />
+
+                    <Button
+                        android:id="@+id/btn_registrar"
+                        style="@style/QRAsist.Button.Primary"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/btn_registrar_asistencia" />
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+    </FrameLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
