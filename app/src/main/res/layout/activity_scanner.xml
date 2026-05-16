@@ -4,18 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background">
+    android:background="@color/app_background">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@color/maestro_primary"
+        app:elevation="0dp">
+        
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/toolbar_scanner"
             style="@style/QRAsist.Toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             app:navigationIcon="@android:drawable/ic_menu_close_clear_cancel"
-            app:title="@string/titulo_scanner" />
+            app:title="@string/titulo_scanner"
+            app:titleTextColor="@android:color/white" />
     </com.google.android.material.appbar.AppBarLayout>
 
     <FrameLayout
@@ -39,8 +43,7 @@
                 android:gravity="center"
                 android:paddingHorizontal="32dp"
                 android:text="@string/instruccion_scanner"
-                android:textAppearance="?attr/textAppearanceBodyMedium"
-                android:textColor="@color/on_surface_variant" />
+                style="@style/QRAsist.Text.Subtitle" />
 
             <com.journeyapps.barcodescanner.DecoratedBarcodeView
                 android:id="@+id/barcode_scanner"
@@ -55,8 +58,7 @@
                 android:layout_marginTop="12dp"
                 android:gravity="center"
                 android:text="Apunta al código QR del alumno"
-                android:textAppearance="?attr/textAppearanceBodySmall"
-                android:textColor="@color/on_surface_variant" />
+                style="@style/QRAsist.Text.StatLabel" />
         </LinearLayout>
 
         <!-- Vista B — Resultado del escaneo -->
@@ -88,10 +90,11 @@
                             android:id="@+id/iv_avatar_alumno"
                             android:layout_width="80dp"
                             android:layout_height="80dp"
-                            android:background="@color/maestro_primary_light"
+                            android:background="@color/input_background"
                             android:padding="12dp"
                             android:src="@android:drawable/ic_menu_myplaces"
-                            app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Full" />
+                            app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Full"
+                            app:tint="@color/maestro_primary" />
 
                         <LinearLayout
                             android:layout_width="0dp"
@@ -102,25 +105,21 @@
 
                             <TextView
                                 android:id="@+id/tv_nombre_alumno"
+                                style="@style/QRAsist.Text.Title"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textAppearance="?attr/textAppearanceTitleLarge"
-                                android:textColor="?attr/colorPrimary"
-                                android:textStyle="bold" />
+                                android:layout_height="wrap_content" />
 
                             <TextView
                                 android:id="@+id/tv_matricula_alumno"
+                                style="@style/QRAsist.Text.Subtitle"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textAppearance="?attr/textAppearanceBodyMedium"
-                                android:textColor="@color/on_surface_variant" />
+                                android:layout_height="wrap_content" />
 
                             <TextView
                                 android:id="@+id/tv_grupo_alumno"
+                                style="@style/QRAsist.Text.StatLabel"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textAppearance="?attr/textAppearanceBodySmall"
-                                android:textColor="@color/on_surface_variant" />
+                                android:layout_height="wrap_content" />
                         </LinearLayout>
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
@@ -138,11 +137,12 @@
                         android:padding="12dp">
 
                         <TextView
+                            style="@style/QRAsist.Text.Title"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="8dp"
                             android:text="Estado de asistencia"
-                            android:textAppearance="?attr/textAppearanceTitleSmall" />
+                            android:textSize="14sp" />
 
                         <Spinner
                             android:id="@+id/spinner_estado"
