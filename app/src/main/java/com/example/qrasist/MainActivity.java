@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
@@ -26,7 +25,6 @@ public class MainActivity extends AppCompatActivity {
     private TextInputEditText etUsuario, etPassword;
     private TextInputLayout tilUsuario, tilPassword;
     private Button btnLogin;
-    private TextView tvForgot;
     private String rolSeleccionado = "MAESTRO";
 
     @Override
@@ -43,7 +41,6 @@ public class MainActivity extends AppCompatActivity {
         tilUsuario = findViewById(R.id.til_usuario);
         tilPassword = findViewById(R.id.til_password);
         btnLogin = findViewById(R.id.btn_login);
-        tvForgot = findViewById(R.id.tv_forgot);
 
         setupRolSelector();
         setupLoginButton();
@@ -67,7 +64,6 @@ public class MainActivity extends AppCompatActivity {
             tilPassword.setBoxStrokeColor(color);
             tilPassword.setHintTextColor(colorStateList);
             btnLogin.setBackgroundColor(color);
-            tvForgot.setTextColor(color);
         });
     }
 

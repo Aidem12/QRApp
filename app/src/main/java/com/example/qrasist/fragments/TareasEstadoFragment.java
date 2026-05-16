@@ -128,9 +128,9 @@ public class TareasEstadoFragment extends Fragment implements TareaAlumnoAdapter
             layoutEmpty.setVisibility(View.VISIBLE);
             rv.setVisibility(View.GONE);
             switch (tabTipo) {
-                case "Pendiente": tvMessage.setText("No tienes tareas pendientes 🎉"); break;
+                case "Pendiente": tvMessage.setText("No tienes tareas pendientes"); break;
                 case "Entregada": tvMessage.setText("Aún no has entregado ninguna tarea"); break;
-                default: tvMessage.setText("No tienes tareas sin entregar ✅"); break;
+                default: tvMessage.setText("No tienes tareas sin entregar"); break;
             }
         } else {
             layoutEmpty.setVisibility(View.GONE);
