@@ -5,7 +5,7 @@
         <item name="colorPrimary">@color/maestro_primary</item>
         <item name="colorPrimaryDark">@color/maestro_primary_dark</item>
         <item name="colorAccent">@color/maestro_primary_light</item>
-        <item name="android:windowBackground">@color/background</item>
+        <item name="android:windowBackground">@color/app_background</item>
         <item name="android:statusBarColor">@color/maestro_primary_dark</item>
     </style>
 
@@ -14,12 +14,14 @@
         <item name="colorPrimary">@color/maestro_primary</item>
         <item name="colorPrimaryDark">@color/maestro_primary_dark</item>
         <item name="android:statusBarColor">@color/maestro_primary_dark</item>
+        <item name="android:windowBackground">@color/app_background</item>
     </style>
 
-    <!-- Tema Alumno -->
+    <!-- Tema Alumno (Enfoque Tecnológico/Esmeralda) -->
     <style name="Theme.QRAsist.Alumno" parent="Theme.QRAsist">
         <item name="colorPrimary">@color/alumno_primary</item>
         <item name="colorPrimaryDark">@color/alumno_primary_dark</item>
         <item name="android:statusBarColor">@color/alumno_primary_dark</item>
+        <item name="android:windowBackground">@color/alumno_background</item>
     </style>
 </resources>

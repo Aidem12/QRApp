@@ -6,11 +6,12 @@
     <color name="maestro_primary_light">#3B82F6</color>
     <color name="maestro_on_primary">#FFFFFF</color>
 
-    <!-- Paleta de Colores (Rol Alumno - Restaurada para evitar error de compilación) -->
-    <color name="alumno_primary">#059669</color>
-    <color name="alumno_primary_dark">#064E3B</color>
-    <color name="alumno_primary_light">#34D399</color>
+    <!-- Paleta de Colores (Rol Alumno - Enfoque Tecnológico/Esmeralda) -->
+    <color name="alumno_primary">#065F46</color>
+    <color name="alumno_primary_dark">#044B38</color>
+    <color name="alumno_primary_light">#10B981</color>
     <color name="alumno_on_primary">#FFFFFF</color>
+    <color name="alumno_background">#F4FBF7</color>
 
     <!-- Fondo y Superficies -->
     <color name="app_background">#F8FAFC</color>
@@ -19,6 +20,7 @@
     <!-- Textos -->
     <color name="text_primary">#1E293B</color>
     <color name="text_secondary">#64748B</color>
+    <color name="text_primary_alumno">#0F172A</color>
     
     <!-- Inputs -->
     <color name="input_background">#F1F5F9</color>
@@ -36,7 +38,7 @@
     <color name="tarea_no_entregada">#B91C1C</color>
     <color name="tarea_pendiente">#B45309</color>
 
-    <!-- Legacy / Compatibilidad (Mapeados a la nueva paleta para evitar errores de compilación) -->
+    <!-- Legacy / Compatibilidad -->
     <color name="background">#F8FAFC</color>
     <color name="surface">#FFFFFF</color>
     <color name="on_surface">#1E293B</color>

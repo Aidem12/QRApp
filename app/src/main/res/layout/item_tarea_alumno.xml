@@ -4,8 +4,11 @@
     style="@style/QRAsist.Card"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginHorizontal="8dp"
-    android:layout_marginVertical="4dp">
+    android:layout_marginHorizontal="4dp"
+    android:layout_marginVertical="8dp"
+    app:cardBackgroundColor="@color/surface_card"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="2dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -16,7 +19,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_vertical"
+            android:gravity="top"
             android:orientation="horizontal">
 
             <LinearLayout
@@ -29,7 +32,8 @@
                     android:id="@+id/tv_titulo_tarea_alumno"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textAppearance="?attr/textAppearanceTitleSmall"
+                    android:textSize="16sp"
+                    android:textColor="@color/text_primary_alumno"
                     android:textStyle="bold" />
 
                 <TextView
@@ -38,56 +42,59 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
                     android:ellipsize="end"
-                    android:maxLines="2"
-                    android:textAppearance="?attr/textAppearanceBodySmall"
-                    android:textColor="@color/on_surface_variant" />
+                    android:maxLines="3"
+                    android:textSize="13sp"
+                    android:textColor="@color/text_secondary"
+                    android:lineSpacingExtra="2dp" />
             </LinearLayout>
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/chip_estado_tarea_alumno"
-                style="@style/Widget.Material3.Chip.Assist"
+                style="@style/QRAsist.Chip.Status"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:clickable="false"
-                android:textSize="11sp" />
+                android:layout_marginStart="8dp" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
+            android:gravity="center_vertical"
             android:orientation="horizontal">
 
             <ImageView
                 android:layout_width="16dp"
                 android:layout_height="16dp"
                 android:src="@android:drawable/ic_menu_today"
-                app:tint="@color/on_surface_variant" />
+                app:tint="@color/text_secondary" />
 
             <TextView
                 android:id="@+id/tv_fecha_limite_tarea_alumno"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:textAppearance="?attr/textAppearanceBodySmall"
-                android:textColor="@color/on_surface_variant" />
+                android:layout_marginStart="6dp"
+                android:textSize="12sp"
+                android:textColor="@color/text_secondary" />
 
             <TextView
                 android:id="@+id/tv_fecha_entrega_tarea_alumno"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:textAppearance="?attr/textAppearanceBodySmall"
-                android:textColor="@color/estado_presente"
+                android:textSize="12sp"
+                android:textColor="@color/alumno_primary"
+                android:textStyle="bold"
                 android:visibility="gone" />
         </LinearLayout>
 
-        <!-- PANEL DE ACCIONES PARA EL ALUMNO -->
+        <!-- PANEL DE ACCIONES PARA EL ALUMNO - Rediseñado -->
         <LinearLayout
             android:id="@+id/layout_acciones_alumno"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="16dp"
             android:orientation="horizontal"
             android:visibility="gone">
 
@@ -99,7 +106,10 @@
                 android:layout_weight="1"
                 android:layout_marginEnd="8dp"
                 android:text="Adjuntar"
-                app:icon="@android:drawable/ic_menu_camera" />
+                android:textColor="@color/alumno_primary"
+                app:icon="@android:drawable/ic_menu_camera"
+                app:iconTint="@color/alumno_primary"
+                app:strokeColor="@color/alumno_primary" />
 
             <Button
                 android:id="@+id/btn_enviar_tarea"
@@ -107,7 +117,9 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Enviar" />
+                android:text="Enviar"
+                android:backgroundTint="@color/alumno_primary"
+                android:textColor="@android:color/white" />
         </LinearLayout>
 
     </LinearLayout>
