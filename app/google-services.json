@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "65053387738",
+    "project_id": "qrapp-b6cd3",
+    "storage_bucket": "qrapp-b6cd3.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:65053387738:android:f5dab6aa5039f4e9e86ee3",
+        "android_client_info": {
+          "package_name": "com.example.qrasist"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCuzNn3tfS8mscM4GsDvz0ePeua9cYytmk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
