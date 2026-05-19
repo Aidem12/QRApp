@@ -21,6 +21,7 @@ import com.example.qrasist.R;
 import com.example.qrasist.database.DBHelper;
 import com.example.qrasist.models.Grupo;
 import com.example.qrasist.models.Tarea;
+import com.example.qrasist.sync.SyncManager;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.text.SimpleDateFormat;
@@ -166,17 +167,23 @@ public class TareaDialogFragment extends DialogFragment {
         String fechaHoy = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
         boolean exito;
 
+        SyncManager syncManager = new SyncManager(getContext());
         if (tareaId == -1) {
             int grupoId = listaGrupos.get(spinnerGrupo.getSelectedItemPosition()).getId();
             long id = db.insertarTarea(titulo, descripcion, fechaHoy, fechaLimiteSeleccionada, grupoId, maestroId);
-            if (id != -1) {
+            exito = id != -1;
+            if (exito) {
                 db.asignarTareaAGrupo((int) id, grupoId);
-                exito = true;
-            } else {
-                exito = false;
+                Tarea t = db.obtenerTareaPorId((int) id);
+                if (t != null) syncManager.syncTarea(t);
+                syncManager.subirTodoAFirebase(); // Sincroniza las asignaciones nuevas
             }
         } else {
             exito = db.actualizarTarea(tareaId, titulo, descripcion, fechaLimiteSeleccionada);
+            if (exito) {
+                Tarea t = db.obtenerTareaPorId(tareaId);
+                if (t != null) syncManager.syncTarea(t);
+            }
         }
 
         if (exito) {

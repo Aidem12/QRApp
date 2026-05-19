@@ -19,7 +19,8 @@ import androidx.core.content.ContextCompat;
 
 import com.example.qrasist.database.DBHelper;
 import com.example.qrasist.models.Alumno;
-import com.example.qrasist.models.Grupo;
+import com.example.qrasist.models.Asistencia;
+import com.example.qrasist.sync.SyncManager;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
@@ -149,6 +150,11 @@ public class ScannerActivity extends AppCompatActivity {
         long resultado = db.insertarAsistencia(alumnoEscaneado.getId(), maestroId, fechaHoy, estado, observacion);
 
         if (resultado > 0) {
+            // INYECCIÓN FIRESTORE: Gatillo inmediato
+            SyncManager syncManager = new SyncManager(this);
+            Asistencia a = new Asistencia((int)resultado, alumnoEscaneado.getId(), maestroId, fechaHoy, estado, observacion);
+            syncManager.syncAsistencia(a);
+
             Snackbar.make(layoutResultado, R.string.exito_asistencia, Snackbar.LENGTH_SHORT).show();
             new Handler().postDelayed(this::reiniciarScanner, 1500);
         } else {

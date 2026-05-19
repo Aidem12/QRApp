@@ -9,7 +9,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class SyncManager {
-    private static final String TAG = "SyncManager";
+    private static final String TAG = "FIREBASE_SYNC";
     private final DBHelper db;
     private final FirebaseFirestore firestore;
 
@@ -18,45 +18,41 @@ public class SyncManager {
         this.firestore = FirebaseFirestore.getInstance();
     }
 
-    // --- SUBIDA (Dispositivo A) ---
-    public void subirTodoAFirebase() {
-        subirGrupos();
-        subirAlumnos();
-        subirAsistencias();
-        subirTareas();
-        subirTareasAlumnos();
+    // --- MÉTODOS DE SINCRONIZACIÓN INDIVIDUAL (Gatillos en tiempo real) ---
+
+    public void syncAlumno(Alumno a) {
+        firestore.collection("alumnos").document(String.valueOf(a.getId())).set(a)
+            .addOnSuccessListener(unused -> Log.d(TAG, "¡Éxito! Dato subido a la nube al instante."))
+            .addOnFailureListener(e -> Log.e(TAG, "Falló la subida en tiempo real: ", e));
     }
 
-    private void subirGrupos() {
+    public void syncAsistencia(Asistencia a) {
+        firestore.collection("asistencias").document(String.valueOf(a.getId())).set(a)
+            .addOnSuccessListener(unused -> Log.d(TAG, "¡Éxito! Dato subido a la nube al instante."))
+            .addOnFailureListener(e -> Log.e(TAG, "Falló la subida en tiempo real: ", e));
+    }
+
+    public void syncTarea(Tarea t) {
+        firestore.collection("tareas").document(String.valueOf(t.getId())).set(t)
+            .addOnSuccessListener(unused -> Log.d(TAG, "¡Éxito! Dato subido a la nube al instante."))
+            .addOnFailureListener(e -> Log.e(TAG, "Falló la subida en tiempo real: ", e));
+    }
+
+    public void syncTareaAlumno(TareaAlumno ta) {
+        firestore.collection("tarea_alumno").document(String.valueOf(ta.getId())).set(ta)
+            .addOnSuccessListener(unused -> Log.d(TAG, "¡Éxito! Dato subido a la nube al instante."))
+            .addOnFailureListener(e -> Log.e(TAG, "Falló la subida en tiempo real: ", e));
+    }
+
+    // --- SUBIDA MASIVA ---
+    public void subirTodoAFirebase() {
         for (Grupo g : db.obtenerGrupos()) {
             firestore.collection("grupos").document(String.valueOf(g.getId())).set(g);
         }
-    }
-
-    private void subirAlumnos() {
-        for (Alumno a : db.obtenerTodosAlumnos()) {
-            firestore.collection("alumnos").document(String.valueOf(a.getId())).set(a);
-        }
-    }
-
-    private void subirAsistencias() {
-        for (Asistencia a : db.obtenerTodasLasAsistencias()) {
-            firestore.collection("asistencias").document(String.valueOf(a.getId())).set(a);
-        }
-    }
-
-    private void subirTareas() {
-        for (Tarea t : db.obtenerTodasTareas()) {
-            firestore.collection("tareas").document(String.valueOf(t.getId())).set(t);
-        }
-    }
-
-    private void subirTareasAlumnos() {
-        for (TareaAlumno ta : db.obtenerTodasTareasAlumno()) {
-            // Se suben los datos de texto directamente a Firestore.
-            // La lógica de Firebase Storage ha sido desactivada.
-            firestore.collection("tarea_alumno").document(String.valueOf(ta.getId())).set(ta);
-        }
+        for (Alumno a : db.obtenerTodosAlumnos()) syncAlumno(a);
+        for (Asistencia a : db.obtenerTodasLasAsistencias()) syncAsistencia(a);
+        for (Tarea t : db.obtenerTodasTareas()) syncTarea(t);
+        for (TareaAlumno ta : db.obtenerTodasTareasAlumno()) syncTareaAlumno(ta);
     }
 
     // --- ESCUCHA (Dispositivo B) ---

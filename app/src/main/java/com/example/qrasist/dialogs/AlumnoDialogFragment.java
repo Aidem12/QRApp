@@ -21,6 +21,7 @@ import com.example.qrasist.R;
 import com.example.qrasist.database.DBHelper;
 import com.example.qrasist.models.Alumno;
 import com.example.qrasist.models.Grupo;
+import com.example.qrasist.sync.SyncManager;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.util.ArrayList;
@@ -142,11 +143,20 @@ public class AlumnoDialogFragment extends DialogFragment {
         int grupoId = listaGrupos.get(spinnerGrupo.getSelectedItemPosition()).getId();
 
         boolean exito;
+        SyncManager syncManager = new SyncManager(getContext());
         if (alumnoId == -1) {
             long id = db.insertarAlumno(nombre, matricula, matricula, grupoId, email);
             exito = id != -1;
+            if (exito) {
+                Alumno a = db.obtenerAlumnoPorId((int) id);
+                if (a != null) syncManager.syncAlumno(a);
+            }
         } else {
             exito = db.actualizarAlumno(alumnoId, nombre, matricula, email, grupoId);
+            if (exito) {
+                Alumno a = db.obtenerAlumnoPorId(alumnoId);
+                if (a != null) syncManager.syncAlumno(a);
+            }
         }
 
         if (exito) {
