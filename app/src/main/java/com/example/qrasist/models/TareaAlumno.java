@@ -6,7 +6,8 @@ public class TareaAlumno {
     private int alumnoId;
     private String estado;
     private String fechaEntrega;
-    private String comentario;
+    private String comentario; // Ruta local de la imagen
+    private String imageUrl;   // URL de Firebase Storage
 
     public TareaAlumno() {}
 
@@ -17,6 +18,17 @@ public class TareaAlumno {
         this.estado = estado;
         this.fechaEntrega = fechaEntrega;
         this.comentario = comentario;
+    }
+
+    // Constructor completo para sincronización
+    public TareaAlumno(int id, int tareaId, int alumnoId, String estado, String fechaEntrega, String comentario, String imageUrl) {
+        this.id = id;
+        this.tareaId = tareaId;
+        this.alumnoId = alumnoId;
+        this.estado = estado;
+        this.fechaEntrega = fechaEntrega;
+        this.comentario = comentario;
+        this.imageUrl = imageUrl;
     }
 
     public int getId() { return id; }
@@ -31,4 +43,6 @@ public class TareaAlumno {
     public void setFechaEntrega(String fechaEntrega) { this.fechaEntrega = fechaEntrega; }
     public String getComentario() { return comentario; }
     public void setComentario(String comentario) { this.comentario = comentario; }
+    public String getImageUrl() { return imageUrl; }
+    public void setImageUrl(String imageUrl) { this.imageUrl = imageUrl; }
 }
