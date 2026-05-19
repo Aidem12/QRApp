@@ -7,6 +7,7 @@ import com.example.qrasist.database.DBHelper;
 import com.example.qrasist.models.*;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreSettings;
 
 public class SyncManager {
     private static final String TAG = "FIREBASE_SYNC";
@@ -16,9 +17,15 @@ public class SyncManager {
     public SyncManager(Context context) {
         this.db = new DBHelper(context);
         this.firestore = FirebaseFirestore.getInstance();
+        
+        // Habilitar persistencia offline
+        FirebaseFirestoreSettings settings = new FirebaseFirestoreSettings.Builder()
+                .setPersistenceEnabled(true)
+                .build();
+        this.firestore.setFirestoreSettings(settings);
     }
 
-    // --- MÉTODOS DE SINCRONIZACIÓN INDIVIDUAL (Gatillos en tiempo real) ---
+    // --- MÉTODOS DE SINCRONIZACIÓN INDIVIDUAL (INSERT/UPDATE) ---
 
     public void syncAlumno(Alumno a) {
         firestore.collection("alumnos").document(String.valueOf(a.getId())).set(a)
@@ -42,6 +49,42 @@ public class SyncManager {
         firestore.collection("tarea_alumno").document(String.valueOf(ta.getId())).set(ta)
             .addOnSuccessListener(unused -> Log.d(TAG, "¡Éxito! Dato subido a la nube al instante."))
             .addOnFailureListener(e -> Log.e(TAG, "Falló la subida en tiempo real: ", e));
+    }
+
+    // --- MÉTODOS DE BORRADO (DELETE) ---
+
+    public void eliminarAlumnoFirestore(int id) {
+        firestore.collection("alumnos").document(String.valueOf(id)).delete()
+            .addOnSuccessListener(unused -> Log.d(TAG, "¡Éxito! Documento eliminado de la nube."))
+            .addOnFailureListener(e -> Log.e(TAG, "Error al intentar borrar en la nube: ", e));
+    }
+
+    public void eliminarAsistenciaFirestore(int id) {
+        firestore.collection("asistencias").document(String.valueOf(id)).delete()
+            .addOnSuccessListener(unused -> Log.d(TAG, "¡Éxito! Documento eliminado de la nube."))
+            .addOnFailureListener(e -> Log.e(TAG, "Error al intentar borrar en la nube: ", e));
+    }
+
+    public void eliminarTareaFirestore(int id) {
+        firestore.collection("tareas").document(String.valueOf(id)).delete()
+            .addOnSuccessListener(unused -> Log.d(TAG, "¡Éxito! Documento eliminado de la nube."))
+            .addOnFailureListener(e -> Log.e(TAG, "Error al intentar borrar en la nube: ", e));
+        
+        // También se deben borrar las asignaciones de esa tarea
+        firestore.collection("tarea_alumno")
+            .whereEqualTo("tareaId", id)
+            .get()
+            .addOnSuccessListener(queryDocumentSnapshots -> {
+                for (DocumentSnapshot doc : queryDocumentSnapshots) {
+                    doc.getReference().delete();
+                }
+            });
+    }
+
+    public void eliminarTareaAlumnoFirestore(int id) {
+        firestore.collection("tarea_alumno").document(String.valueOf(id)).delete()
+            .addOnSuccessListener(unused -> Log.d(TAG, "¡Éxito! Documento eliminado de la nube."))
+            .addOnFailureListener(e -> Log.e(TAG, "Error al intentar borrar en la nube: ", e));
     }
 
     // --- SUBIDA MASIVA ---

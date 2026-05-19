@@ -27,6 +27,7 @@ import com.example.qrasist.dialogs.GrupoDialogFragment;
 import com.example.qrasist.models.Alumno;
 import com.example.qrasist.models.Grupo;
 import com.example.qrasist.models.Maestro;
+import com.example.qrasist.sync.SyncManager;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -163,6 +164,9 @@ public class GestionAlumnosFragment extends Fragment implements AlumnoAdapter.Al
                 .setMessage("¿Eliminar a " + alumno.getNombre() + "?")
                 .setPositiveButton("Eliminar", (dialog, which) -> {
                     if (db.eliminarAlumno(alumno.getId())) {
+                        // GATILLO DE BORRADO FIRESTORE
+                        new SyncManager(getContext()).eliminarAlumnoFirestore(alumno.getId());
+                        
                         Snackbar.make(rvAlumnos, R.string.exito_alumno_eliminado, Snackbar.LENGTH_SHORT).show();
                         cargarAlumnos();
                     }
