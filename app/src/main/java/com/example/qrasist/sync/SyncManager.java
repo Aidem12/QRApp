@@ -1,30 +1,21 @@
 package com.example.qrasist.sync;
 
 import android.content.Context;
-import android.net.Uri;
 import android.util.Log;
 
 import com.example.qrasist.database.DBHelper;
 import com.example.qrasist.models.*;
-import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
-
-import java.io.File;
-import java.util.List;
 
 public class SyncManager {
     private static final String TAG = "SyncManager";
     private final DBHelper db;
     private final FirebaseFirestore firestore;
-    private final FirebaseStorage storage;
 
     public SyncManager(Context context) {
         this.db = new DBHelper(context);
         this.firestore = FirebaseFirestore.getInstance();
-        this.storage = FirebaseStorage.getInstance();
     }
 
     // --- SUBIDA (Dispositivo A) ---
@@ -62,29 +53,10 @@ public class SyncManager {
 
     private void subirTareasAlumnos() {
         for (TareaAlumno ta : db.obtenerTodasTareasAlumno()) {
-            // Si hay imagen local y no se ha subido (sin imageUrl)
-            if (ta.getComentario() != null && !ta.getComentario().isEmpty() && (ta.getImageUrl() == null || ta.getImageUrl().isEmpty())) {
-                subirImagenYActualizar(ta);
-            } else {
-                firestore.collection("tarea_alumno").document(String.valueOf(ta.getId())).set(ta);
-            }
+            // Se suben los datos de texto directamente a Firestore.
+            // La lógica de Firebase Storage ha sido desactivada.
+            firestore.collection("tarea_alumno").document(String.valueOf(ta.getId())).set(ta);
         }
-    }
-
-    private void subirImagenYActualizar(TareaAlumno ta) {
-        File file = new File(ta.getComentario());
-        if (!file.exists()) return;
-
-        StorageReference ref = storage.getReference().child("evidencias/" + ta.getId() + ".jpg");
-        ref.putFile(Uri.fromFile(file)).addOnSuccessListener(taskSnapshot -> {
-            ref.getDownloadUrl().addOnSuccessListener(uri -> {
-                ta.setImageUrl(uri.toString());
-                // Actualizar localmente con la URL
-                db.insertarTareaAlumnoSync(ta);
-                // Subir a Firestore
-                firestore.collection("tarea_alumno").document(String.valueOf(ta.getId())).set(ta);
-            });
-        }).addOnFailureListener(e -> Log.e(TAG, "Error subiendo imagen", e));
     }
 
     // --- ESCUCHA (Dispositivo B) ---

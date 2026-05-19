@@ -14,6 +14,7 @@ import androidx.core.content.ContextCompat;
 import com.example.qrasist.database.DBHelper;
 import com.example.qrasist.models.Alumno;
 import com.example.qrasist.models.Maestro;
+import com.example.qrasist.sync.SyncManager;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
@@ -80,6 +81,8 @@ public class MainActivity extends AppCompatActivity {
             SharedPreferences prefs = getSharedPreferences("QRAsistPrefs", MODE_PRIVATE);
             SharedPreferences.Editor editor = prefs.edit();
 
+            SyncManager syncManager = new SyncManager(this);
+
             if (rolSeleccionado.equals("MAESTRO")) {
                 Maestro maestro = db.loginMaestro(usuario, password);
                 if (maestro != null) {
@@ -87,6 +90,9 @@ public class MainActivity extends AppCompatActivity {
                     editor.putString("user_nombre", maestro.getNombre());
                     editor.putString("user_rol", "MAESTRO");
                     editor.apply();
+
+                    // Sincronizar datos al iniciar sesión exitosamente
+                    syncManager.subirTodoAFirebase();
 
                     startActivity(new Intent(this, DashboardMaestroActivity.class));
                     finish();
@@ -100,6 +106,9 @@ public class MainActivity extends AppCompatActivity {
                     editor.putString("user_nombre", alumno.getNombre());
                     editor.putString("user_rol", "ALUMNO");
                     editor.apply();
+
+                    // Sincronizar datos al iniciar sesión exitosamente
+                    syncManager.subirTodoAFirebase();
 
                     startActivity(new Intent(this, DashboardAlumnoActivity.class));
                     finish();

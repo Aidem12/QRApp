@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'com.google.gms.google-services'
+    id 'org.jetbrains.kotlin.android'
 }
 
 android {
@@ -30,6 +31,7 @@ android {
 }
 
 dependencies {
+
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.google.android.material:material:1.11.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
@@ -38,10 +40,18 @@ dependencies {
     implementation 'com.journeyapps:zxing-android-embedded:4.3.0'
     implementation 'com.google.zxing:core:3.5.2'
 
+    // DataStore y Kotlin para corregir el crasheo de Firestore en proyectos Java
+    implementation 'androidx.datastore:datastore-preferences:1.0.0'
+    implementation 'androidx.datastore:datastore-preferences-core:1.0.0'
+    implementation 'androidx.datastore:datastore-core:1.0.0'
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib:1.8.22'
+
     // Importar la BoM de Firebase de forma correcta
     implementation platform('com.google.firebase:firebase-bom:34.13.0')
 
     // Dependencias de Firebase necesarias para el proyecto
+
+
     implementation 'com.google.firebase:firebase-firestore'
     implementation 'com.google.firebase:firebase-storage'
     
